@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="colors.css">
+</head>
+<body>
+<!-- component template -->
+<script type="text/x-template" id="grid-template">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th v-for="colorC in colorsArr" :style="{ color: colorC.hex }">
+          {{ colorC.name }} <br>
+          {{ colorC.hex }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="colorR in colorsArr" :style="{ backgroundColor: colorR.hex }">
+        <td>
+            {{ colorR.name }} <br>
+            {{ colorR.hex }}
+        </td>
+        <td v-for="colorC in colorsArr" :style="{ color: colorC.hex }">
+          {{ sample }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</script>
+
+<div id="app">
+    <input v-model="sample">
+  <color-grid
+    :colors-arr="colorsArr"
+    :sample="sample">
+  </color-grid>
+</div>
+
+<script src="colors.js" ></script>
+</body>
+</html>
