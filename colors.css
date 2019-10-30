@@ -1,0 +1,17 @@
+div#app {
+  margin: auto;
+  width: 75%;
+}
+input {
+  display: block;
+  margin: auto;
+}
+th, td {
+  width: 130px;
+  height: 60px;
+  text-align: center;
+  vertical-align: middle;
+}
+/* td {
+  height: 60px;
+} */
