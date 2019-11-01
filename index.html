@@ -23,13 +23,32 @@
         <td>
             {{ colorR.name }} <br>
             {{ colorR.hex }}
+
         </td>
-        <td v-for="colorC in colorsArr" :style="{ color: colorC.hex }">
-          {{ sample }}
+        <td v-for="colorC in colorsArr" :style="{ backgroundColor: colorR.hex, color: colorC.hex }">
+          {{ sample }} <br>
+          <contrast-result
+            :rowColor="colorR"
+            :colColor="colorC"
+            :xcolors="colorR.name+colorC.name" >
+          </contrast-result>
         </td>
       </tr>
     </tbody>
   </table>
+</script>
+<script type="text/x-template" id="contrast-template">
+  <div class="result" :class="xcolors">
+    <button @click="contrast">Check</button>
+    <ul v-if="rdata.ratio">
+      <li v-if="rdata.ratio > 7"> ✓ </li>
+      <li class='ratio' :class="passRatio(rdata.ratio)">ratio: {{rdata.ratio}}</li>
+      <li class='AA' :class="rdata.AA">AA: {{rdata.AA}}</li>
+      <li class='AAA' :class="rdata.AAA">AAA: {{rdata.AAA}}</li>
+      <li class='AALarge' :class="rdata.AALarge">AALarge: {{rdata.AALarge}}</li>
+      <li class='AAALarge' :class="rdata.AAALarge">AAALarge: {{rdata.AAALarge}}</li>
+    </ul>
+  </div>
 </script>
 
 <div id="app">
