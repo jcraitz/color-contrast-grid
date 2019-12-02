@@ -1,6 +1,14 @@
+body {
+  background-color: darkslategrey;
+}
+/* tr{
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+} */
 div#app {
   margin: auto;
   width: 75%;
+  background-color: darkslategrey;
 }
 input {
   display: block;
