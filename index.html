@@ -13,24 +13,35 @@
       <tr>
         <th></th>
         <th v-for="colorC in colorsArr" :style="{ color: colorC.hex }">
-          {{ colorC.name }} <br>
-          {{ colorC.hex }}
+          <td :style="{'background-color': 'grey', 'text-shadow': '0px 1px 2px black' }">
+            {{ colorC.name }} <br>
+            {{ colorC.hex }} <br>
+            <!-- brightness: {{ colorC.brightness }} <br> -->
+            luminance: {{ colorC.luminance.toFixed(6) }}
+          </td>
+          
         </th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="colorR in colorsArr" :style="{ backgroundColor: colorR.hex }">
-        <td>
+        <td :style="{display: 'grid', gridTemplateColumns: '1fr 4fr', textShadow: '0px 1px 2px ' + black, 'grid-gap': '5px', backgroundColor: 'black'}">
+          <div :style="{ backgroundColor: colorR.hex }"></div>
+          <div style="background-color:white;">
             {{ colorR.name }} <br>
-            {{ colorR.hex }}
-
+            {{ colorR.hex }} <br>
+            <!-- brightness: {{ colorR.brightness }} <br> -->
+            luminance: {{ colorR.luminance.toFixed(6) }}
+          </div>
+            
         </td>
         <td v-for="colorC in colorsArr" :style="{ backgroundColor: colorR.hex, color: colorC.hex }">
           {{ sample }} <br>
+          ratio: {{ getRatio(colorC.luminance,colorR.luminance) }}
           <contrast-result
             :rowColor="colorR"
             :colColor="colorC"
-            :xcolors="colorR.name+colorC.name" >
+            :xcolors="colorR.name+colorC.name">
           </contrast-result>
         </td>
       </tr>
